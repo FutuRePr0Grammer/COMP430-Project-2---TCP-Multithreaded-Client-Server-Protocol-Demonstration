@@ -138,18 +138,21 @@ class ClientThread extends Thread
                         }
                     }
                     else if(inputSplit[0].equals("GET")){
+                        boolean foundName = false;
                         for(int i = 0; i < names.size(); i++){
                             if(inputSplit[1].equals(names.get(i))){
                                 //Debugging statement
                                 //out.println("GET " + inputSplit[1]);
+                                foundName = true;
                                 out.print(numbers.get(i));
                                 out.println();
+                                break;
                             }
-                            else{
-                                //out.println("WrongGET " + inputSplit[1]);
-                                out.print("300 Not Found");
-                                out.println();
-                            }
+                        }
+                        if(!foundName){
+                            //out.println("WrongGET " + inputSplit[1]);
+                            out.print("300 Not Found");
+                            out.println();
                         }
                     }
                     else{
